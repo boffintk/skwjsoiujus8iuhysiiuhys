@@ -2,170 +2,244 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Poppy Playtime 5: Factory Escape</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links Rapidos</title>
     <style>
-        body { margin: 0; overflow: hidden; background: #050505; font-family: 'Courier New', Courier, monospace; }
-        #ui { position: absolute; top: 10px; left: 10px; color: #ff0000; text-shadow: 2px 2px #000; z-index: 10; display: none; }
-        #stamina-bar { width: 150px; height: 10px; background: #330000; border: 1px solid #ff0000; margin-top: 5px; }
-        #stamina-fill { width: 100%; height: 100%; background: #ff0000; }
+        body {
+            background: linear-gradient(135deg, #6b46c1, #1e3a8a);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 30px;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        /* Logo de cabecera con glitch/neón rojo */
+        .logo-yt {
+            width: 140px;
+            height: 90px;
+            background: #FF0000;
+            color: white;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.2em;
+            font-weight: bold;
+            margin: 20px auto;
+            box-shadow: 0 0 30px #ff0000, inset 0 0 15px rgba(255,255,255,0.4);
+            text-shadow: 0 0 10px #fff;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            padding: 30px;
+            width: 90%;
+        }
+        .card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .logo {
+            width: 130px;
+            height: 130px;
+            margin: 20px auto;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            overflow: hidden; /* Evita que la imagen se salga de los bordes */
+        }
+        /* Efecto extra al pasar el mouse por la tarjeta */
+        .card:hover .logo {
+            transform: scale(1.05);
+        }
+        button {
+            background: #fff;
+            color: #6b46c1;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            background: #ffd700;
+            color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ffd700;
+        }
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        /* --- DETALLES DE LOS LOGOS NEÓN FIEL A LAS MARCAS --- */
         
-        .controls { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; box-sizing: border-box; z-index: 20; display: none; pointer-events: none; }
-        .btn { width: 80px; height: 80px; background: rgba(255, 0, 0, 0.2); border: 2px solid #ff0000; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: auto; font-weight: bold; color: white; user-select: none; }
-        #joy { width: 110px; height: 110px; background: rgba(0, 0, 255, 0.1); border-radius: 50%; border: 3px solid #0000ff; pointer-events: auto; }
-        
-        #cam-zone { position: absolute; top: 0; right: 0; width: 60%; height: 60%; z-index: 5; pointer-events: auto; }
-        #menu { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; text-align: center; color: white; border: 10px double #ff0000; box-sizing: border-box; }
-        .play-btn { padding: 20px 40px; background: #ff0000; color: white; border: none; border-radius: 5px; font-size: 24px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px #ff0000; }
+        /* YouTube: Rojo neón puro */
+        .logo-youtube {
+            background: #FF0000; 
+            font-size: 4.8em; 
+            box-shadow: 0 0 35px #ff0000, inset 0 0 15px rgba(255,255,255,0.3);
+            text-shadow: 0 0 12px rgba(255,255,255,0.8);
+        }
+        /* TikTok: El icónico glitch Neón Cyan y Rojo */
+        .logo-tiktok {
+            background: #010101; 
+            color: #fff; 
+            font-size: 4.5em; 
+            border: 4px solid #00f2fe; 
+            box-shadow: 0 0 25px #00f2fe, 0 0 40px #fe2d55, inset 0 0 10px rgba(0,242,254,0.5);
+            text-shadow: 3px 3px 0px #fe2d55, -3px -3px 0px #00f2fe;
+        }
+        /* Omenasito: Imagen personalizada con borde redondeado y neón adaptado */
+        .logo-omenasito {
+            background: linear-gradient(135deg, #111, #bd1c1c); 
+            border-radius: 50%; /* Hace el contenedor circular igual que la imagen */
+            box-shadow: 0 0 35px #39FF14, inset 0 0 15px rgba(189, 28, 28, 0.4);
+        }
+        .logo-omenasito img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta la imagen perfectamente al contenedor */
+        }
+        /* SSSTik: Descarga Neón Violeta */
+        .logo-ssstik {
+            background: #7c3aed; 
+            color: white; 
+            font-size: 5.5em; 
+            box-shadow: 0 0 35px #a78bfa, inset 0 0 15px rgba(255,255,255,0.3);
+            text-shadow: 0 0 15px #fff;
+        }
+        /* Grok: Verde Matrix / Cyberpunk */
+        .logo-grok {
+            background: #000; 
+            color: #00FF9F; 
+            font-size: 4.5em; 
+            border: 4px solid #00FF9F; 
+            box-shadow: 0 0 30px #00FF9F, inset 0 0 15px rgba(0,255,159,0.3);
+            text-shadow: 0 0 15px #00FF9F;
+            font-family: monospace;
+        }
+        /* Sprunkis: Musical Neón Lima */
+        .logo-sprunkis {
+            background: linear-gradient(135deg, #00FF00, #006400); 
+            color: #fff; 
+            font-size: 4.2em; 
+            box-shadow: 0 0 35px #39FF14, inset 0 0 10px rgba(255,255,255,0.5);
+            text-shadow: 0 0 15px #39FF14;
+        }
+        /* ChatGPT: El logo oficial con su característico tono Esmeralda brillante */
+        .logo-chatgpt {
+            background: #10A37F; 
+            color: white; 
+            font-size: 2.2em; 
+            box-shadow: 0 0 35px #10A37F, inset 0 0 15px rgba(255,255,255,0.3);
+            text-shadow: 0 0 10px rgba(255,255,255,0.6);
+        }
+        /* Roblox: El clásico bloque inclinado con brillo metálico y neón naranja */
+        .logo-roblox {
+            background: #191919; 
+            color: #ff3333; 
+            font-size: 4.5em; 
+            border: 4px solid #ff3333;
+            box-sizing: border-box;
+            box-shadow: 0 0 35px #ff3333, inset 0 0 15px rgba(255,51,51,0.4);
+            text-shadow: 0 0 15px #ff3333;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <div class="logo-yt">▶</div>
+        <h1>Links Favoritos</h1>
+    </header>
 
-<div id="menu">
-    <h1 style="color:#ff0000; font-size: 40px; margin-bottom: 0;">POPPY PLAYTIME 5</h1>
-    <p style="margin-bottom: 30px;">LA FÁBRICA HA SIDO ABANDONADA...</p>
-    <button class="play-btn" onclick="start()">ENTRAR A LA FÁBRICA</button>
-</div>
+    <div class="container">
+        <div class="card">
+            <h2>YouTube</h2>
+            <div class="logo logo-youtube">▶</div>
+            <button onclick="window.open('https://www.youtube.com/?app=desktop&hl=es', '_blank')">Ir a YouTube</button>
+        </div>
 
-<div id="cam-zone"></div>
+        <div class="card">
+            <h2>TikTok</h2>
+            <div class="logo logo-tiktok">♪</div>
+            <button onclick="window.open('https://www.tiktok.com/es-419/', '_blank')">Ir a TikTok</button>
+        </div>
 
-<div id="ui">
-    <h3 style="margin:0">JUGUETES RECOGIDOS: <span id="score">0</span> / 10</h3>
-    <div id="stamina-bar"><div id="stamina-fill"></div></div>
-</div>
+        <div class="card">
+            <h2>Omenasito</h2>
+            <div class="logo logo-omenasito">
+                <img src="77372.jpg" alt="Logo Omenasito">
+            </div>
+            <button onclick="window.open('https://www.youtube.com/@Omenasito', '_blank')">Canal Omenasito</button>
+        </div>
 
-<div class="controls" id="game-controls">
-    <div id="joy"></div>
-    <div style="display:flex; gap: 15px;">
-        <div class="btn" id="run">SHIFT</div>
-        <div class="btn" id="jump">SALTAR</div>
+        <div class="card">
+            <h2>SSSTik.io</h2>
+            <div class="logo logo-ssstik">↓</div>
+            <button onclick="window.open('https://ssstik.io/es', '_blank')">Ir a SSSTik</button>
+        </div>
+
+        <div class="card">
+            <h2>Grok</h2>
+            <div class="logo logo-grok">G</div>
+            <button onclick="window.open('https://grok.com/', '_blank')">Ir a Grok</button>
+        </div>
+
+        <div class="card">
+            <h2>Sprunkis</h2>
+            <div class="logo logo-sprunkis">🎵</div>
+            <button onclick="window.open('https://sprunki.net/es/', '_blank')">Jugar Sprunkis</button>
+        </div>
+
+        <div class="card">
+            <h2>ChatGPT</h2>
+            <div class="logo logo-chatgpt">Chat</div>
+            <button onclick="window.open('https://chatgpt.com/?utm_source=google&utm_medium=paid_search&utm_campaign=GOOG_C_SEM_GBR_Core_CHT_BAU_ACQ_PER_MIX_ALL_LATAM_MX_EN_041425&c_id=22443203654&c_agid=183247727732&c_crid=746213485398&c_kwid=kwd-1927227100722&c_ims=&c_pms=20710&c_nw=g&c_dvc=t&gad_source=1&gad_campaignid=22443203654&gbraid=0AAAAA-I0E5c-VRsAC59k_Ldl9opigscca&gclid=CjwKCAjw8uTQBhAdEiwAVvtJylQlHPvFyqA0fqTCPPeCh336K6xqIfi23QG4pcszdFNHSKjvkg2jJBoCgIcQAvD_BwE&referrer=gclid%3DCjwKCAjw8uTQBhAdEiwAVvtJylQlHPvFyqA0fqTCPPeCh336K6xqIfi23QG4pcszdFNHSKjvkg2jJBoCgIcQAvD_BwE&gref=EkQKPAoICPDy5NAGEB0SLABW-0nKVCUc-8XKoDR-pMI894KHfforrGoh-LbdAbilyzN0U0dIqO-SDaMkGgKAhxAC8P8HARiXp9CRPg', '_blank')">Ir a ChatGPT</button>
+        </div>
+
+        <div class="card">
+            <h2>Roblox</h2>
+            <div class="logo logo-roblox">R</div>
+            <button onclick="window.open('https://www.roblox.com/es/home', '_blank')">Ir a Roblox</button>
+        </div>
     </div>
-</div>
 
-<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
-
-<script>
-    let scene, camera, renderer, player, clock;
-    let toys = [], score = 0, stamina = 100;
-    let isRunning = false, yVel = 0, moveX = 0, moveZ = 0;
-    let camRotation = 0, lastTouchX = 0;
-
-    function start() {
-        document.getElementById('menu').style.display = 'none';
-        document.getElementById('ui').style.display = 'block';
-        document.getElementById('game-controls').style.display = 'flex';
-        init();
-    }
-
-    function init() {
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x050505);
-        scene.fog = new THREE.Fog(0x050505, 5, 35); // Niebla para terror
-        
-        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        clock = new THREE.Clock();
-
-        renderer = new THREE.WebGLRenderer({ antialias: false });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        // Luz de linterna (débil)
-        const light = new THREE.PointLight(0xffffff, 1, 30);
-        light.position.set(0, 2, 0);
-        player = new THREE.Group();
-        player.add(light);
-        
-        // El Jugador (Mano de GrabPack Azul)
-        const hand = new THREE.Mesh(new THREE.BoxGeometry(0.6, 1.8, 0.6), new THREE.MeshBasicMaterial({ color: 0x0000ff }));
-        hand.position.y = 0.9;
-        player.add(hand);
-        scene.add(player);
-
-        // Suelo metálico oxidado
-        const floor = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), new THREE.MeshBasicMaterial({ color: 0x111111 }));
-        floor.rotation.x = -Math.PI / 2;
-        scene.add(floor);
-
-        // Muros de la fábrica (Oscuros y altos)
-        const wallMat = new THREE.MeshBasicMaterial({ color: 0x222222 });
-        function addWall(w, h, d, x, z) {
-            const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), wallMat);
-            m.position.set(x, h/2, z);
-            scene.add(m);
-        }
-        addWall(80, 12, 2, 0, -40); addWall(80, 12, 2, 0, 40);
-        addWall(2, 12, 80, -40, 0); addWall(2, 12, 80, 40, 0);
-        addWall(25, 12, 2, -15, 5); addWall(2, 12, 25, 5, -15); // Pasillos
-
-        // Juguetes "Poseídos" que escapan
-        for(let i=0; i<10; i++) {
-            const t = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.7, 0.7), new THREE.MeshBasicMaterial({ color: 0xffff00 }));
-            t.position.set((Math.random()-0.5)*60, 0.5, (Math.random()-0.5)*60);
-            scene.add(t);
-            toys.push(t);
-        }
-
-        // Controles de Cámara
-        const camZone = document.getElementById('cam-zone');
-        camZone.ontouchstart = (e) => { lastTouchX = e.touches[0].clientX; };
-        camZone.ontouchmove = (e) => {
-            let deltaX = e.touches[0].clientX - lastTouchX;
-            camRotation -= deltaX * 0.008;
-            lastTouchX = e.touches[0].clientX;
-        };
-
-        const joy = document.getElementById('joy');
-        joy.ontouchmove = (e) => {
-            const r = joy.getBoundingClientRect();
-            moveX = (e.touches[0].clientX - (r.left + r.width/2)) / 30;
-            moveZ = (e.touches[0].clientY - (r.top + r.height/2)) / 30;
-        };
-        joy.ontouchend = () => { moveX = 0; moveZ = 0; };
-
-        document.getElementById('run').ontouchstart = () => isRunning = true;
-        document.getElementById('run').ontouchend = () => isRunning = false;
-        document.getElementById('jump').ontouchstart = () => { if(player.position.y <= 0.1) yVel = 0.3; };
-
-        animate();
-    }
-
-    function animate() {
-        requestAnimationFrame(animate);
-        let speed = (isRunning && stamina > 0) ? 0.45 : 0.25;
-        if(isRunning && stamina > 0) stamina -= 0.8; else if(stamina < 100) stamina += 0.4;
-        document.getElementById('stamina-fill').style.width = stamina + "%";
-
-        let forward = new THREE.Vector3(0, 0, -1).applyAxisAngle(new THREE.Vector3(0, 1, 0), camRotation);
-        let right = new THREE.Vector3(1, 0, 0).applyAxisAngle(new THREE.Vector3(0, 1, 0), camRotation);
-        
-        player.position.addScaledVector(forward, -moveZ * speed);
-        player.position.addScaledVector(right, moveX * speed);
-
-        player.position.y += yVel;
-        if(player.position.y > 0) yVel -= 0.02; else { player.position.y = 0; yVel = 0; }
-
-        // IA: Los juguetes se alejan si te acercas
-        toys.forEach((t, i) => {
-            let dist = player.position.distanceTo(t.position);
-            if(dist < 7) {
-                let dir = new THREE.Vector3().subVectors(t.position, player.position).normalize();
-                t.position.addScaledVector(dir, 0.12);
-                t.rotation.y += 0.2; // Giran rápido cuando escapan
-            }
-            if(dist < 1.5) {
-                scene.remove(t);
-                toys.splice(i, 1);
-                score++;
-                document.getElementById('score').innerText = score;
-            }
-        });
-
-        let camOffset = new THREE.Vector3(0, 10, 15).applyAxisAngle(new THREE.Vector3(0, 1, 0), camRotation);
-        camera.position.copy(player.position).add(camOffset);
-        camera.lookAt(player.position);
-
-        renderer.render(scene, camera);
-    }
-</script>
+    <footer>
+        <p>Hecho con vibes purple</p>
+    </footer>
 </body>
 </html>
